@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 
-const Statistics = (props) => {
+const Statistic = (props) => {
     if(props.value === 0) {
         return (
             <p>No feedback given!</p>
@@ -39,10 +39,6 @@ const App = () => {
         setBad(startingValue)
     }
 
-    const calcAverage = () => {
-        
-    }
-
     return (
         <div>
             <h1>Feedback for UniCafe</h1>
@@ -50,12 +46,29 @@ const App = () => {
             <Button clickHandler = {() => setNeutralValue(neutral + 1)} text = "Neutral" />
             <Button clickHandler = {() => setBadValue(bad + 1)} text = "Bad" />
             <h1>Statistics</h1>
-            <Statistics text = "Good: " value = {good}/>
-            <Statistics text = "Neutral: " value = {neutral}/>
-            <Statistics text = "Bad: " value = {bad}/>
-            <Statistics text = "All: " value = {good + neutral + bad} />
-            <Statistics text = "Average: " value = {(good - bad) / 3} />
-            <Statistics text = "Positive percentage: "  value = {0}/>
+            <table>
+                <thead></thead>
+                <tbody>
+                <tr>
+                    <td><Statistic text = "Good: " value = {good}/></td>
+                </tr>
+                <tr>
+                    <td><Statistic text = "Neutral: " value = {neutral}/></td>
+                </tr>
+                <tr>
+                    <td><Statistic text = "Bad: " value = {bad}/></td>
+                </tr>
+                <tr>
+                    <td><Statistic text = "All: " value = {good + bad + neutral}/></td>
+                </tr>
+                <tr>
+                    <td><Statistic text = "Average: " value = {((good - bad) / 3).toFixed(2)} /></td>
+                </tr>
+                <tr>
+                    <td><Statistic text = "Positive percentage: "  value = {0}/></td>
+                </tr>
+            </tbody>
+            </table>    
         </div>
     )
 }
