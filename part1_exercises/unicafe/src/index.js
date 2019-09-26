@@ -1,11 +1,18 @@
 import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 
-const Display = (props) => (
+const Statistics = (props) => {
+    if(props.value === 0) {
+        return (
+            <p>No feedback given!</p>
+        )
+    }
+    return(
     <div>
         <p>{props.text} {props.value}</p>
     </div>
-)
+    )
+}
 
 const Button = (props) => (
     <button onClick = {props.clickHandler}>
@@ -43,12 +50,12 @@ const App = () => {
             <Button clickHandler = {() => setNeutralValue(neutral + 1)} text = "Neutral" />
             <Button clickHandler = {() => setBadValue(bad + 1)} text = "Bad" />
             <h1>Statistics</h1>
-            <Display text = "Good: " value = {good}/>
-            <Display text = "Neutral: " value = {neutral}/>
-            <Display text = "Bad: " value = {bad}/>
-            <Display text = "All: " value = {good + neutral + bad} />
-            <Display text = "Average: " value = {(good - bad) / 3} />
-            <Display text = "Positive percentage: "  value = {(good + neutral + bad ) / 100 * 100}/>
+            <Statistics text = "Good: " value = {good}/>
+            <Statistics text = "Neutral: " value = {neutral}/>
+            <Statistics text = "Bad: " value = {bad}/>
+            <Statistics text = "All: " value = {good + neutral + bad} />
+            <Statistics text = "Average: " value = {(good - bad) / 3} />
+            <Statistics text = "Positive percentage: "  value = {0}/>
         </div>
     )
 }
