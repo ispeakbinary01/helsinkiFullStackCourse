@@ -32,6 +32,10 @@ const App = () => {
         setBad(startingValue)
     }
 
+    const calcAverage = () => {
+        
+    }
+
     return (
         <div>
             <h1>Feedback for UniCafe</h1>
@@ -42,6 +46,9 @@ const App = () => {
             <Display text = "Good: " value = {good}/>
             <Display text = "Neutral: " value = {neutral}/>
             <Display text = "Bad: " value = {bad}/>
+            <Display text = "All: " value = {good + neutral + bad} />
+            <Display text = "Average: " value = {(good - bad) / 3} />
+            <Display text = "Positive percentage: "  value = {(good + neutral + bad ) / 100 * 100}/>
         </div>
     )
 }
