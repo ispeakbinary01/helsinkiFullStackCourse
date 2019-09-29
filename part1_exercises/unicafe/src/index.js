@@ -18,7 +18,10 @@ const Button = (props) => (
     <button onClick = {props.clickHandler}>
         {props.text}
     </button>
+    
 )
+
+
 
 
 
@@ -37,7 +40,7 @@ const App = () => {
     }
     const setBadValue = (startingValue) => {
         setBad(startingValue)
-    }
+    }    
 
     return (
         <div>
