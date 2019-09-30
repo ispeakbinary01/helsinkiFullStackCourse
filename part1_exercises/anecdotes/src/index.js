@@ -14,23 +14,29 @@ const Button = (props) => (
 const App = (props) => {
     const [selected, setSelected] = useState(0)
     const randomValue = () => {
-        console.log("FUNC")
         let min = 1
         let max = 5
         let rand = min + Math.floor((Math.random() * (max - min)))
-        console.log("RANDOM", rand)
-        console.log("MAX", max)
 
         setSelected(rand)
+    }
+
+    const vote = (i, arr) => {
+        arr[i] += 1
     }
 
     return (
         <div>
             <Display text = {props.anecdotes[selected]}/>
             <Button clickHandler = {() => randomValue()} buttonText = "Random Quote" />
+            <pre></pre>
+            <Button clickHandler = {() => vote(props.anecdotes.indexOf(props.anecdotes[selected]), props.votes)} buttonText = "Vote"/>
         </div>
     )
 }
+
+const votes = Array.apply(null, new Array(5)).map(Number.prototype.valueOf, 0)
+const copy = [...votes]
 
 const anecdotes = [
     'If it hurts, do it more often',
@@ -41,4 +47,4 @@ const anecdotes = [
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
   ]
 
-ReactDOM.render(<App anecdotes = {anecdotes} />, document.getElementById('root'));
+ReactDOM.render(<App anecdotes = {anecdotes} votes = {copy} />, document.getElementById('root'));
