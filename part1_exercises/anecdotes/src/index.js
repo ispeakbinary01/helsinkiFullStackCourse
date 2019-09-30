@@ -25,17 +25,28 @@ const App = (props) => {
         arr[i] += 1
     }
 
+    const getMaxVotes = (arr) => {
+        return (
+            Math.max(...arr)
+        )
+    }
+
+
     return (
         <div>
+            <h1>Anecdote of the day</h1>
             <Display text = {props.anecdotes[selected]}/>
             <Button clickHandler = {() => randomValue()} buttonText = "Random Quote" />
             <pre></pre>
             <Button clickHandler = {() => vote(props.anecdotes.indexOf(props.anecdotes[selected]), props.votes)} buttonText = "Vote"/>
+            <h1>Anecdote with the most votes</h1>
+            <h1>{props.anecdotes[props.votes.indexOf(Math.max(...props.votes))]}</h1>
+            {console.log(props.votes)}
         </div>
     )
 }
 
-const votes = Array.apply(null, new Array(5)).map(Number.prototype.valueOf, 0)
+const votes = Array.apply(null, new Array(6)).map(Number.prototype.valueOf, 0)
 const copy = [...votes]
 
 const anecdotes = [
