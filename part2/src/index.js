@@ -23,30 +23,4 @@ const notes = [
         important: true
     }
 ]
-// const App = ({ notes }) => {
-
-//     const rows = () =>
-//     notes.map(note => 
-//         <Note
-//             key = {note.id}
-//             note = {note}
-//         />            
-//         )
-
-//     return (
-//         <div>
-//             <h1>Notes</h1>
-//             <ul>
-//                 {/* <li>{notes[0].content}</li>
-//                 <li>{notes[1].content}</li>
-//                 <li>{notes[2].content}</li> */}
-//                 {/* {notes.map(note => <li>{note.content}</li>)} */}
-//                 {rows()}
-//             </ul>
-//         </div>
-//     )
-// }
-
-// const result = notes.map(note => note.content)
-// console.log(result)
 ReactDOM.render(<App notes = {notes} />, document.getElementById('root'));
