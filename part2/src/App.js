@@ -27,7 +27,6 @@ const App = ({ notes }) => {
             setNewNote('')
         }
         const handleNote = (event) => {
-            console.log(event.target.value)
             setNewNote(event.target.value)
         }
 

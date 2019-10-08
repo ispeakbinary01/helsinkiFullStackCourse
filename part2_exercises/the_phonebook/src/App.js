@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Name from './components/Contact'
 import Contact from './components/Contact';
+import Form from './components/Form'
 
 const App = () => {
   const [people, setPeople] = useState([
@@ -8,6 +8,8 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [showFiltered, setFiltered] = useState(people)
+  const [search, setSearch] = useState("")
 
   const addContact = (event) => {
     event.preventDefault()
@@ -15,7 +17,6 @@ const App = () => {
       name: newName,
       number: newNumber,
     }
-    console.log("THIS IS contact.name ", contact.name)
     if(people.some(p => p.name === contact.name)) {
       alert(`${newName} is already in the phonebook!`)
     } else {
@@ -32,30 +33,30 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
+
   const showContacts = () => 
-    people.map(person => 
+    filtered.map(person => 
       <Contact
         key = {person.name}
         contact = {person}
       />
       )
-
-  return (
+       return (
     <div>
       <h2>Phonebook</h2>
-      <form onSubmit = {addContact}>
-        <div>
-          name: <input value = {newName} onChange = {handleName} />
-        </div>
-        <div>
-          number: <input value = {newNumber} onChange = {handleNumber} />
-        </div>
-        <button type = "submit">Add</button>
-      </form>
-      <h2>Numbers</h2>
+      <div>
+      </div>
+      <h1>Add contact</h1>
+      <Form addContact = {addContact} newName = {newName} handleName = {handleName} 
+        newNumber = {newNumber} handleNumber = {handleNumber}
+      />
+      <h2>Contacts</h2>
       {showContacts()}
     </div>
   )
 }
 
-export default App;
+export default App
