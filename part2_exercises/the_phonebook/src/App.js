@@ -8,8 +8,6 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-  const [showFiltered, setFiltered] = useState(people)
-  const [search, setSearch] = useState("")
 
   const addContact = (event) => {
     event.preventDefault()
@@ -31,10 +29,6 @@ const App = () => {
   }
   const handleNumber = (event) => {
     setNewNumber(event.target.value)
-  }
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value)
   }
 
   const showContacts = () => 
