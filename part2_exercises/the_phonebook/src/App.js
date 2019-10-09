@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Contact from './components/Contact';
 import Form from './components/Form'
+import axios from 'axios'
 
 const App = () => {
-  const [people, setPeople] = useState([
-    {name: 'Arto Hellas', number: '040-123456'}
-  ])
+  const [people, setPeople] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
@@ -24,6 +23,7 @@ const App = () => {
     }
   }
 
+
   const handleName = (event) => {
     setNewName(event.target.value)
   }
@@ -31,8 +31,18 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 
+  useEffect(() => {
+    axios
+    .get("http://localhost:3001/people")
+    .then(r => {
+      setPeople(r.data)
+    })
+  }, [])
+
+
+
   const showContacts = () => 
-    filtered.map(person => 
+    people.map(person => 
       <Contact
         key = {person.name}
         contact = {person}
