@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Note from './components/Note'
-import axios from 'axios'
 import noteService from './services/notes'
 
 const App = () => {
@@ -16,12 +15,11 @@ const App = () => {
 
         noteService
         .update(id, changedNote)
-        .then(returnedNote => {
-            setNotes(notes.map(note => note.id !== id ? note : returnedNote))
-        })
-        .catch(err => {
+        .then(r => {
+            setNotes(notes.map(note => note.id !== id ? note : r))
+        }).catch(e => {
             alert(
-                `the note '${note.content}' was already deleted from server`
+                `the note '${note.content}' was already deleted from the server`
             )
             setNotes(notes.filter(n => n.id !== id))
         })
@@ -53,8 +51,8 @@ const App = () => {
             }
             noteService
             .create(noteObject)
-            .then(returnedNote => {
-                setNotes(notes.concat(returnedNote))
+            .then(r => {
+                setNotes(notes.concat(r))
                 setNewNote('')
             })
         }

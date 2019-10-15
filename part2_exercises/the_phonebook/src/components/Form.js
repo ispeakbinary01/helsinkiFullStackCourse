@@ -7,6 +7,7 @@ const Form = (props) => {
                 <div>
                     name: <input value = {props.newName} onChange = {props.handleName} />
                 </div>
+                <br/>
                 <div>
                     number: <input value = {props.newNumber} onChange = {props.handleNumber} />
                 </div>

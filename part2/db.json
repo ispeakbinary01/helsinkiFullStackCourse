@@ -41,6 +41,18 @@
       "date": "2019-10-10T21:57:23.530Z",
       "important": true,
       "id": 7
+    },
+    {
+      "content": "a new note...a",
+      "date": "2019-10-15T12:39:50.815Z",
+      "important": false,
+      "id": 8
+    },
+    {
+      "content": "w",
+      "date": "2019-10-15T12:39:58.967Z",
+      "important": true,
+      "id": 9
     }
   ]
 }
