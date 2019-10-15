@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Contact from './components/Contact';
 import Form from './components/Form'
-// import axios from 'axios'
 import contactService from './services/contacts'
 
 const App = () => {
@@ -11,7 +10,6 @@ const App = () => {
 
   const deleteContact = id => {
     const contact = people.find(c => c.id === id)
-
     contactService
     .deleteContact(id)
     .then(r => {
@@ -33,7 +31,6 @@ const App = () => {
       setPeople(initialContacts)
     })
   }, [])
-
   const showContacts = () => 
     people.map(person => 
       <Contact
@@ -45,21 +42,40 @@ const App = () => {
 
   const addContact = (event) => {
     event.preventDefault()
-    const newContact = {
-      name: newName,
-      number: newNumber,
-    }
-    contactService
-    .create(newContact)
-    .then(con => {
-      if(people.some(p => p.name === con.name)) {
-        alert(`${newName} is already in the phonebook!`)
-      } else {
-        setPeople(people.concat(con))
+    // console.log("After preventdefault")
+    // const newContact = {
+    //   name: newName,
+    //   number: newNumber,
+    // }
+    // console.log("New contact", newContact)
+    // console.log("Sup")
+    // contactService
+    // .create(newContact)
+    // .then(con => {
+    //   if(people.some(p => p.name === con.name)) {
+    //     alert(`${newName} is already in the phonebook!`)
+    //   } else {
+    //     setPeople(people.concat(con))
+    //     console.log('All people', people)
+    //     setNewName('')
+    //     setNewNumber('')
+    //   }
+    // })
+    if(people.findIndex(person => person.name === newName) > -1) {
+      alert(newName + ' is already taken')
+    } else {
+      const obj = {
+        name: newName,
+        number: newNumber
+      }
+      contactService
+      .create(obj)
+      .then(newP => {
+        setPeople(people.concat(newP))
         setNewName('')
         setNewNumber('')
-      }
-    })
+      })
+    }
   }
 
 
@@ -74,9 +90,14 @@ const App = () => {
       <h2>Phonebook</h2>
       <br/>
       <h1>Add contact</h1>
-      <Form onSubmit = {addContact} newName = {newName} handleName = {handleName} 
+      {/* <Form onSubmit = {addContact} newName = {newName} handleName = {handleName} 
         newNumber = {newNumber} handleNumber = {handleNumber}
-      />
+      /> */}
+      <form onSubmit = {addContact}>
+                    name: <input value = {newName} onChange = {handleName} />
+                    number: <input value = {newNumber} onChange = {handleNumber} />
+                <button type = "submit">Add Contact</button>
+            </form>
       <h2>Contacts</h2>
       <ul>
       {showContacts()}
