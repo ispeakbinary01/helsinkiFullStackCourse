@@ -4,7 +4,7 @@ const Contact = ({contact, deleteContact}) => {
     return (
         <li>
         {contact.name} {contact.number} 
-        <button onClick = {deleteContact}>Delete</button>
+        <button onClick = {() => {if(window.confirm('Delete the item?')) deleteContact()}}>Delete</button>
         </li>
     )
 }

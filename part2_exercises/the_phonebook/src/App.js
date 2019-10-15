@@ -16,12 +16,14 @@ const App = () => {
     .deleteContact(id)
     .then(r => {
       setPeople(people.map(p => p.id === id ? contact : r))
+      setPeople(people.filter(n => n.id !== id))
     }).catch(e => {
       alert(
         `${contact.name}'s ${contact.number} is already deleted`
       )
+      
     })
-    setPeople(people.filter(n => n.id !== id))
+    
   }
 
   useEffect(() => {
@@ -67,12 +69,6 @@ const App = () => {
   const handleNumber = (event) => {
     setNewNumber(event.target.value)
   }
-
- 
-
-
-
-  
        return (
     <div>
       <h2>Phonebook</h2>
