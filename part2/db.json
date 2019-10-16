@@ -21,25 +21,25 @@
     {
       "content": "reeee",
       "date": "2019-10-10T21:44:21.539Z",
-      "important": true,
+      "important": false,
       "id": 4
     },
     {
       "content": "reeee",
       "date": "2019-10-10T21:44:23.577Z",
-      "important": true,
+      "important": false,
       "id": 5
     },
     {
       "content": "a new note...",
       "date": "2019-10-10T21:56:18.450Z",
-      "important": true,
+      "important": false,
       "id": 6
     },
     {
       "content": "a new note...",
       "date": "2019-10-10T21:57:23.530Z",
-      "important": true,
+      "important": false,
       "id": 7
     },
     {
@@ -51,7 +51,7 @@
     {
       "content": "w",
       "date": "2019-10-15T12:39:58.967Z",
-      "important": true,
+      "important": false,
       "id": 9
     }
   ]
