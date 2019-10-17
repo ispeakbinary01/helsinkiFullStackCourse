@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "lata",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "lata",
+    "watch": "nodemon index.js"
+  },
+  "author": "Martin Danev",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
